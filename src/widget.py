@@ -4,9 +4,9 @@ from src.mask import get_mask_account, get_mask_card_number
 def mask_account_card(type_and_number: str) -> str:
     '''возвращает замаскированный номер'''
     if type_and_number[:4] == 'Счет':
-        return 'Счет ' + get_mask_account(int(type_and_number[:20]))
+        return 'Счет ' + get_mask_account(int(type_and_number[20:]))
     else:
-        return type_and_number[:-16] + get_mask_card_number(int(type_and_number[16:]))
+        return type_and_number[:-16] + get_mask_card_number(int(type_and_number[-16:]))
 
 
 def get_date(full_format: str) -> str:
